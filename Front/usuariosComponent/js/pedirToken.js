@@ -11,3 +11,15 @@ function login() {
   }
 
   login();
+  //getToken();
+
+  function getToken(){
+  firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+    console.log(idToken);
+    // ...
+  }).catch(function(error) {
+    console.log(error)
+  });
+}
+
+  

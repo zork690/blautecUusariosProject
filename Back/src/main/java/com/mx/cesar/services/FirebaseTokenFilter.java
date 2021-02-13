@@ -22,6 +22,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.google.api.client.util.Strings;
 import com.google.api.core.ApiFuture;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseToken;
 
 @Component
@@ -45,8 +46,17 @@ public class FirebaseTokenFilter extends OncePerRequestFilter {
 
         HttpServletRequest httpRequest = request;
         String authToken = httpRequest.getHeader(TOKEN_HEADER);
+        logger.error("El token es: "+authToken);
+        
+        try {
+			verifyToken(authToken);
+			filterChain.doFilter(request, response);
+		} catch (FirebaseAuthException e) {
+			logger.error("ERROR VALIDANDO TOKEN "+e);
+			//e.printStackTrace();
+		}
 
-        if (Strings.isNullOrEmpty(authToken)) {
+       /* if (Strings.isNullOrEmpty(authToken)) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -61,7 +71,7 @@ public class FirebaseTokenFilter extends OncePerRequestFilter {
             logger.error("Fail to authenticate.", ex);
         }
 
-        filterChain.doFilter(request, response);
+        filterChain.doFilter(request, response);*/
     }
 
     /**
@@ -93,6 +103,12 @@ public class FirebaseTokenFilter extends OncePerRequestFilter {
     @Override
     public void destroy() {
         logger.debug("destroy():: invoke");
+    }
+    
+    private void verifyToken(String idToken) throws FirebaseAuthException {
+        FirebaseToken decodedToken = 
+        FirebaseAuth.getInstance().verifyIdToken(idToken);
+        String uid = decodedToken.getUid();
     }
 
 }
