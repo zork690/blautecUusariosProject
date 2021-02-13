@@ -1,0 +1,48 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="./bootstrap5/css/bootstrap.min.css" />
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-firestore.js"></script>
+
+</head>
+
+<body>
+<div class="container">
+    <h1>USUARIOS</h1>
+    <input type="text" id="nombre" placeholder="Nombre" name="nombre" class="form-control my-3"  />
+    <input type="text" id="apellido" placeholder="Apellido" name="apellido" class="form-control my-3" />
+    <input type="text" id="fechaNac" placeholder="Fecha Nacimiento" name="fechaNac" class="form-control my-3" />
+    <button class="btn btn-info" id="guardar" onclick="guardar()">Guardar</button>
+    <button class="btn btn-info" id="editar" onclick="editar()">Editar</button>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">NOMBRE</th>
+            <th scope="col">APELLIDO</th>
+            <th scope="col">FECHA</th>
+          </tr>
+        </thead>
+        <tbody id="tabla">
+          
+        </tbody>
+      </table>
+
+</div>
+    
+
+
+
+
+    <script src="./bootstrap5/js/bootstrap.min.js"></script>
+    <script src="./usuariosComponent/js/jquery-3.5.1.js"></script>
+<script src="./usuariosComponent/js/firebaseConfig.js"></script>
+<script src="./usuariosComponent/js/usuarios.js"></script>
+
+</body>
+
+</html>

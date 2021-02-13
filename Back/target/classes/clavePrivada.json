@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "blautechproject",
+  "private_key_id": "c9fcfd2ec4374b2c9feace5cbb1e881138c91760",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDb2c5MvbPjVqz9\nHRZWe21Ww4Psp10rxEQR0n4WS8ijreWIFhtTgOPJsB0uxzGV7RZxRW2UN53p38jf\n5x16lFDVA2UU6MNtlWFAmaPFzj9FQVmL/iRPyTL5mdq4J2WcMVjnki0DUQZotSyw\nZ8Ekrrbo+HENGHaSbZb9/btft7Oc87m6u4v0tuTy6PNl8btNwxWj5dArDSZXnEPN\nFLvW43YgnOnaaZuCbOCzq9T1DxIBtUXoF1nOWhjuSwOfP1GtcAavVSuLBQVfw947\nZONFoyCRwKzvhCfvRB2ljhzxolbmBVTk1xuRJ/DK7FHManLzVojoKxNftOmKl9lD\niCRqEW3DAgMBAAECggEAPb/57V0VEyQLt5Y9aXIGfmmw+r3xcfMQ6W6VYp7Ljomv\n4B7Rcw1PLZ2NPM/PEhzDAnKtOgW7EW79JUJtaboR0BrBf/N2vKdJ5xKgSNVKuSGH\nTMZHna9V5Xx8zd+m7w1/Op+4i+dspOlKUYv62FpIXrw1SKfX2f30/IcRY2ueA9V9\nzufMlLWHpn+lg9gu08R+6d8LMxGGUibrbzgmEWGAhnwLAaRm83wwzrR3S+f3vYs1\ni41r5y7QQRDARyuGE+RdRHljKN2q9qRKoJhUbChLxsBGM0NUwWv6Wa9yrlacWVAg\nm1dZ6Q8ogdrOsTVa2Z0ZY4dcP1vj+sIQNzWjKmcLEQKBgQDtVLPLbLwFG3cI/BUr\no8zyL6p9MfCj6P6NylAYY+jwN8/QntzW1lskB63KVHCvwXZATLtsy7IMYYvpNqIU\nv2/qBs3jchbwB+UO4kIHf7T0w8lmp4OiK+yH9IYP3Suw+QUHj77q4Dp7TBpH+Ve+\n1U8+Yjb92FH/KQ1Djdz4ypB2cwKBgQDtJRhiryCww8TUzTTF9YB4/kGNuu2p/wGL\nOtPc8RqGd0KqKKapmJcMjOC0MeJuN9U6LhikfvGSPHH7Y6xC8Fg6ExzG76JsNFOW\nILxDd3uW0/56rwjN2TG+9ZrE0DAn8J/XdfxrrjUtqeMhQFJgr/kiJDO2pIqRVkTR\nnmrkarAHcQKBgDLUNT2YKByf6TqPYqlaB4bHFqiBjZxNRldvwP+4RidMjMGNhJau\nig6JZnsy4n+B26WhyXJfnd5w9doYzVXMOlfQ5T+VK7x0tGYfpyyb+VGCrRvDPLn6\n1km34Q58u+LHMoCQFL+RDnVhsy8/A7/nR3WA624qakVPsXuKYo0WNSJpAoGBAOHp\nwdZZIZpjlYJoTwr6+r3I8eg0GK8myHC7xRMo+Oz6dh6mBUdxnwwMtQ/UqfH37IC1\nYzJp4HZAcRFcfcFzN4lzpal6pk/QdYSCgPcAv1MLd9WmI4v+ih5x2VP/RLD30T4w\nHxzx46Uxv7dwkEmduoek10L6cytLdNoAwbICVNlxAoGBANoNGPfkrL/l4mYaN8ir\n+eACMwHIBeVn26GGE+RMb3nviNS0ikOCd3KnNmtigfRS+VYd3ur2Lg0yRby2JLQk\nkAjlcGNCyBAw68HPWoraTNcTYkLc8UB5pk5SEMLWITHJavPS6EbbIdNAhjmh7e/b\nfatk98xe0vYUg4lte646Q7OF\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-snqbt@blautechproject.iam.gserviceaccount.com",
+  "client_id": "109552184400514472586",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-snqbt%40blautechproject.iam.gserviceaccount.com"
+}
