@@ -18,8 +18,6 @@ import com.mx.cesar.entities.Usuario;
 
 @Service
 public class FireBaseService {
-
-	
 	
 	private static final Logger LOG = LoggerFactory.getLogger(FireBaseService.class);
 
@@ -36,7 +34,6 @@ public class FireBaseService {
 	}*/
 	
 	public void guardarUsuario(Usuario usuario) {
-		LOG.error("USUARIO A GUARDAR: ");
 		Firestore dbFirestore = FirestoreClient.getFirestore();
 		 ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("usuarios").
 				 document()

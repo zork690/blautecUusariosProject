@@ -41,7 +41,6 @@ public class InicioRest {
 	@PostMapping("/guardarUsuario")
 	@CrossOrigin()
 	public ResponseEntity<Usuario> guardar(@RequestBody Usuario usuario) {
-		log.error("AQUI VA"+usuario.getNombre());
 		firebaseService.guardarUsuario(usuario);
 		return new ResponseEntity<Usuario>(usuarioService.guardarsuario(
 				new Usuario(usuario.getNombre(), usuario.getApellido(), usuario.getFechaNacimiento())), 
