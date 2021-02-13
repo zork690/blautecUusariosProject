@@ -27,11 +27,15 @@ public class FireBaseInicioervice {
 	@PostConstruct
 	public void firebaseInit() {
 		try {
-			File file = ResourceUtils.getFile("classpath:clavePrivada.json");
-			FileInputStream servicioAcount = new FileInputStream(file);
-			FirebaseOptions firebaseOpciones = new FirebaseOptions.Builder()
-					.setCredentials(GoogleCredentials.fromStream(servicioAcount)).build();
-			FirebaseApp.initializeApp(firebaseOpciones);
+			//File file = ResourceUtils.getFile("classpath:clavePrivada.json");
+			FileInputStream serviceAccount =
+					  new FileInputStream("./clavePrivada.json");
+
+					FirebaseOptions options = new FirebaseOptions.Builder()
+					  .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+					  .build();
+
+					FirebaseApp.initializeApp(options);
 
 		} catch (Exception e) {
 			LOG.error("ERROR INICIANDO: " + e.toString());

@@ -16,14 +16,13 @@ import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 import com.mx.cesar.entities.Usuario;
 
+@Service
 public class FireBaseService {
 
-	@Autowired
-	private Firestore dbFirestore;
+	
 	
 	private static final Logger LOG = LoggerFactory.getLogger(FireBaseService.class);
-	private static final String COLECION = "usuarios";
-	private CollectionReference docRef = dbFirestore.collection("usuarios");
+
 
 	/*public Usuario listarUsuarios(String name) throws InterruptedException, ExecutionException {
 		ApiFuture<DocumentSnapshot> future = docRef.get();
@@ -36,15 +35,24 @@ public class FireBaseService {
 		return null;
 	}*/
 	
-	public void guardarUsuario(Usuario usuario) throws InterruptedException, ExecutionException {
-		LOG.error("USUARIO A GUARDAR: "+usuario.getId());
-		 ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection(COLECION).
-				 document(usuario.getId())
+	public void guardarUsuario(Usuario usuario) {
+		LOG.error("USUARIO A GUARDAR: ");
+		Firestore dbFirestore = FirestoreClient.getFirestore();
+		 ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("usuarios").
+				 document()
 				 .set(usuario);  
-		 LOG.error(collectionsApiFuture.get().getUpdateTime().toString());  
+		 try {
+			LOG.error(collectionsApiFuture.get().getUpdateTime().toString());
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		 } 
 
-	public String actualizarUsuario(Usuario usuario) throws InterruptedException, ExecutionException {
+	/*public String actualizarUsuario(Usuario usuario) throws InterruptedException, ExecutionException {
 		ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection(COLECION).document(usuario.getId()).set(usuario);
 		return collectionsApiFuture.get().getUpdateTime().toString();
 	}
@@ -52,5 +60,5 @@ public class FireBaseService {
 	public String borrarUsuario(String id) {
 		dbFirestore.collection(COLECION).document(id).delete();
 		return "Document with Usuario ID "+id+" ha sido borrado";
-	}
+	}*/
 }

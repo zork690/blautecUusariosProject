@@ -29,10 +29,12 @@ public class UsuarioServiceImpl implements IUsuarioService {
 	}
 	
 	@Override
-	public Usuario guardarsuario(Usuario usuario) throws InterruptedException, ExecutionException {
+	public Usuario guardarsuario(Usuario usuario){
+		//FireBaseService f = new FireBaseService();
+		LOG.error("AQUI NO HAY ERROR");
+		//f.guardarUsuario(usuario);
 		Usuario usuarioGuardado = usuarioDao.save(usuario);
-		LOG.error("USUARIO CREADO: "+usuario.getId());
-		new FireBaseService().guardarUsuario(usuarioGuardado);
+		LOG.error("USUARIO CREADO: "+usuarioGuardado.getId());
 		//firebaseService.guardarUsuario(usuarioGuardado);
 		return usuario;
 	}
