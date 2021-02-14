@@ -1,5 +1,5 @@
 function login() {
-  console.log("ENVIANDO CREDENCIALES ", $("#usuario").val() , $("#clave").val());
+  console.log("ENVIANDO CREDENCIALES ", $("#usuario").val(), $("#clave").val());
   firebase
     .auth()
     .signInWithEmailAndPassword($("#usuario").val(), $("#clave").val()).then(() => {
@@ -19,9 +19,12 @@ function getToken() {
     token = idToken;
     tieneToken = true;
     cerrarModal();
+    console.log(accionUsuario);
+    if (accionUsuario == "guardar") guardar();
+    if (accionUsuario == "listar") {
+      leerUsuarios();
+    }
     eliminarListarButton();
-    leerUsuarios();
-
   }).catch(function (error) {
     console.log(error)
   });

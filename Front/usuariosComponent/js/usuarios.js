@@ -2,31 +2,34 @@ let id = "";
 const SERVIDOR = "http://localhost:8080/";
 let tieneToken = false;
 let token = "";
+let accionUsuario = "";
 $("#editar").hide();
 $("#mensajeUsuarioDiv").hide();
 
 function guardar() {
+    accionUsuario = "guardar";
     if (tieneToken) {
-        console.log("GUARDANDO USUARIO...");
-        db.collection("usuarios").add({
+        let urlCompleta = SERVIDOR + "guardarUsuario";
+        let obj = {
             nombre: $("#nombre").val(),
             apellido: $("#apellido").val(),
             fechaNacimiento: $("#fechaNac").val()
-        })
-            .then(function (docRef) {
-                console.log("Document written with ID: ", docRef.id);
-                limpiarCampos();
-                leerUsuarios();
-            })
-            .catch(function (error) {
-                console.error("Error adding document: ", error);
-            });
+        };
+        peticionAjax("POST", urlCompleta, obj, token).then((respuesta) => {
+            console.log("GUARDANDO USUARIO...");
+            console.log("Document written with ID: ", respuesta);
+            limpiarCampos();
+            leerUsuarios();
+        }).catch(function (error) {
+            console.error("Error adding document: ", error);
+        });
     } else {
         mostrarModal();
     }
 }
 
 function leerUsuarios() {
+    accionUsuario = "listar";
     if (tieneToken) {
         let urlCompleta = SERVIDOR + "listarUsuarios";
         let tabla = $("#tabla");
