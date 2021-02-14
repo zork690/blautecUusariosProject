@@ -56,8 +56,9 @@ function leerUsuarios() {
 }
 
 function borrarUsuario(idUsuario) {
-    db.collection("usuarios").doc(idUsuario).delete().then(function () {
-        console.log("Document successfully deleted!");
+    let urlCompleta = SERVIDOR + "borrarUsuario/"+idUsuario;
+    peticionAjax("POST", urlCompleta, {}, token).then((respuesta) => {
+        console.log(respuesta);
         leerUsuarios();
     }).catch(function (error) {
         console.error("Error removing document: ", error);
