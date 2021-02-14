@@ -16,6 +16,11 @@ function login() {
 function getToken() {
   firebase.auth().currentUser.getIdToken(true).then(function (idToken) {
     console.log(idToken);
+    token = idToken;
+    tieneToken = true;
+    cerrarModal();
+    eliminarListarButton();
+    leerUsuarios();
 
   }).catch(function (error) {
     console.log(error)

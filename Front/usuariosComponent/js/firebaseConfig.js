@@ -1,5 +1,4 @@
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
+var firebaseConfig = {
     apiKey: "AIzaSyAkfa-BxfEuUdYN5RPA_IX-Quqx8PWur6E",
     authDomain: "blautechproject.firebaseapp.com",
     projectId: "blautechproject",
@@ -9,5 +8,3 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  /*console.log("INICIANDO FIREBASE STORE");
-  const db = firebase.firestore();*/
