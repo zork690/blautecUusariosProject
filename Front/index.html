@@ -35,7 +35,7 @@
 
       </tbody>
     </table>
-    <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Listar Usuarios</button>
+    <button class="btn btn-info btn-lg" onclick="leerUsuarios()">Listar Usuarios</button>
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
@@ -44,14 +44,20 @@
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <h4 type="button" class="bg-black" data-dismiss="modal">INGRESA TUS CREDENCIALES DE ACCESO</h4>
+            <h4 type="button" class="bg-black">INGRESA TUS CREDENCIALES DE ACCESO</h4>
           </div>
           <div id="bodyModal" class="modal-body">
-            
+
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-danger">Enviar</button>
+            <button type="button" class="btn btn-danger" onclick="login()">Enviar</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+        <div id="mensajeUsuarioDiv" class="modal-content my-4">
+          <div class="modal-header">
+            <h4 id="mensajesToUser" class="bg-black"></h4>
           </div>
         </div>
 
@@ -63,6 +69,7 @@
   <script src="./globales/objeto_ajax.js"></script>
   <script src="./globales/peticionAjax.js"></script>
   <script src="./usuariosComponent/js/usuarios.js"></script>
+  <script src="./usuariosComponent/js/firebaseConfig.js"></script>
   <script src="./usuariosComponent/js/pedirToken.js"></script>
 
 </body>

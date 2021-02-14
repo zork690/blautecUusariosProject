@@ -2,6 +2,7 @@ let id = "";
 const SERVIDOR = "http://localhost:8080/";
 let tieneToken = false;
 $("#editar").hide();
+$("#mensajeUsuarioDiv").hide();
 
 function guardar() {
     if(tieneToken){
@@ -24,9 +25,8 @@ function guardar() {
     }
 }
 
-leerUsuarios();
-
 function leerUsuarios() {
+    if(tieneToken){
     let tabla = $("#tabla");
     tabla.html("");
     
@@ -43,6 +43,9 @@ function leerUsuarios() {
                 )">Editar</button></td></tr>`);
         });
     });*/
+}else{
+    mostrarModal();
+}
 }
 
 function borrarUsuario(idUsuario) {
@@ -68,7 +71,6 @@ function editar() {
 
     var washingtonRef = db.collection("usuarios").doc(id);
 
-    // Set the "capital" field of the city 'DC'
     return washingtonRef.update({
         nombre: $("#nombre").val(),
         apellido: $("#apellido").val(),
@@ -95,7 +97,10 @@ function limpiarCampos() {
 }
 
 function crearBodyModal(){
-    let usuarioInput = `<input type="text" id="usuario" placeholder="Ingresa Usuario" class="form-control"  my-3/>`;
+    $("#bodyModal").html("");
+    $("#mensajeUsuarioDiv").html("");
+    $("#mensajeUsuarioDiv").hide();
+    let usuarioInput = `<input type="text" id="usuario" placeholder="Ingresa Usuario" class="form-control my-3" />`;
     let claveInput = `<input type="text" id="clave" placeholder="Ingresa Clave" class="form-control"  />`;
     $("#bodyModal").append(usuarioInput);
     $("#bodyModal").append(claveInput);
