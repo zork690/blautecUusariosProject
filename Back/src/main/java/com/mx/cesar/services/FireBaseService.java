@@ -34,10 +34,11 @@ public class FireBaseService {
 	}*/
 	
 	public void guardarUsuario(Usuario usuario) {
+		LOG.error("GUARDANDO EN FIREBASE");
 		Firestore dbFirestore = FirestoreClient.getFirestore();
 		 ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("usuarios").
-				 document()
-				 .set(usuario);  
+				 document(usuario.getId())
+				 .set(new Usuario(usuario.getNombre(), usuario.getApellido(), usuario.getFechaNacimiento()));  
 		 try {
 			LOG.error(collectionsApiFuture.get().getUpdateTime().toString());
 		} catch (InterruptedException e) {
@@ -49,13 +50,15 @@ public class FireBaseService {
 		}
 		 } 
 
-	/*public String actualizarUsuario(Usuario usuario) throws InterruptedException, ExecutionException {
-		ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection(COLECION).document(usuario.getId()).set(usuario);
+	public String actualizarUsuario(Usuario usuario) throws InterruptedException, ExecutionException {
+		Firestore dbFirestore = FirestoreClient.getFirestore();
+		ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("usuarios").document(usuario.getId()).set(usuario);
 		return collectionsApiFuture.get().getUpdateTime().toString();
 	}
 	
 	public String borrarUsuario(String id) {
-		dbFirestore.collection(COLECION).document(id).delete();
+	 Firestore dbFirestore = FirestoreClient.getFirestore();
+		dbFirestore.collection("usuarios").document(id).delete();
 		return "Document with Usuario ID "+id+" ha sido borrado";
-	}*/
+	}
 }

@@ -27,8 +27,7 @@ public class InicioRest {
 	private static final Logger log = LoggerFactory.getLogger(InicioRest.class);
 	
 	
-	@Autowired
-	private FireBaseService firebaseService;
+	
 	
 	@Autowired
 	private IUsuarioService usuarioService;
@@ -44,7 +43,6 @@ public class InicioRest {
 	@PostMapping("/guardarUsuario")
 	@CrossOrigin()
 	public ResponseEntity<Usuario> guardar(@RequestBody Usuario usuario) {
-		firebaseService.guardarUsuario(usuario);
 		return new ResponseEntity<Usuario>(usuarioService.guardarsuario(
 				new Usuario(usuario.getNombre(), usuario.getApellido(), usuario.getFechaNacimiento())), 
 				HttpStatus.CREATED);

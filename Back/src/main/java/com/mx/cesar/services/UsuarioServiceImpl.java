@@ -19,6 +19,9 @@ public class UsuarioServiceImpl implements IUsuarioService {
 	private static final Logger LOG = LoggerFactory.getLogger(UsuarioServiceImpl.class);
 	
 	@Autowired
+	private FireBaseService firebaseService;
+	
+	@Autowired
 	private IUsuarioDao usuarioDao;
 	
 	
@@ -30,11 +33,9 @@ public class UsuarioServiceImpl implements IUsuarioService {
 	
 	@Override
 	public Usuario guardarsuario(Usuario usuario){
-		//FireBaseService f = new FireBaseService();
-		LOG.error("AQUI NO HAY ERROR");
-		//f.guardarUsuario(usuario);
 		Usuario usuarioGuardado = usuarioDao.save(usuario);
-		LOG.error("USUARIO CREADO: "+usuarioGuardado.getId());
+		LOG.error("USUARIO CREADO EN MONGO: "+usuarioGuardado.getId());
+		firebaseService.guardarUsuario(usuarioGuardado);
 		//firebaseService.guardarUsuario(usuarioGuardado);
 		return usuario;
 	}

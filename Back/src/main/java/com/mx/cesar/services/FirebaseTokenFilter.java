@@ -2,6 +2,7 @@ package com.mx.cesar.services;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -24,6 +25,8 @@ import com.google.api.core.ApiFuture;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseToken;
+import com.google.firebase.auth.ImportUserRecord;
+import com.google.firebase.auth.UserRecord;
 
 @Component
 public class FirebaseTokenFilter extends OncePerRequestFilter {
@@ -45,7 +48,7 @@ public class FirebaseTokenFilter extends OncePerRequestFilter {
         logger.error("doFilter:: authenticating...");
 
         HttpServletRequest httpRequest = request;
-        String authToken = httpRequest.getHeader(TOKEN_HEADER);
+        String authToken = httpRequest.getHeader(TOKEN_HEADER).split("Bearer ")[1];
         logger.error("El token es: "+authToken);
         
         try {
@@ -80,14 +83,14 @@ public class FirebaseTokenFilter extends OncePerRequestFilter {
      * @return the computed result
      * @throws Exception
      */
-    private Authentication getAndValidateAuthentication(String authToken) throws Exception {
+    /*private Authentication getAndValidateAuthentication(String authToken) throws Exception {
         Authentication authentication;
 
         FirebaseToken firebaseToken = authenticateFirebaseToken(authToken);
         authentication = new UsernamePasswordAuthenticationToken(firebaseToken, authToken, new ArrayList<>());
 
         return authentication;
-    }
+    }*/
 
     /**
      * @param authToken Firebase access token string
@@ -106,9 +109,21 @@ public class FirebaseTokenFilter extends OncePerRequestFilter {
     }
     
     private void verifyToken(String idToken) throws FirebaseAuthException {
+    	
+    	/*List<ImportUserRecord> users = new ArrayList<>();
+    	users.add(ImportUserRecord.builder()
+    	    .setUid("uid1")
+    	    .setEmail("usuario@prueba.com")
+    	    .setPasswordHash("usuario123456".getBytes())
+    	    .setPasswordSalt("salt1".getBytes())
+    	    .build());
+    	
+    	UserRecord userRecord = FirebaseAuth.getInstance().getUser("uid1");
+    	// See the UserRecord reference doc for the contents of userRecord.
+    	System.out.println("Successfully fetched user data: " + userRecord.getUid());*/
+    	
         FirebaseToken decodedToken = 
         FirebaseAuth.getInstance().verifyIdToken(idToken);
         String uid = decodedToken.getUid();
     }
-
 }
