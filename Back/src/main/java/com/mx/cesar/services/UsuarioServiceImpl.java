@@ -1,9 +1,6 @@
 package com.mx.cesar.services;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-
-import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +33,6 @@ public class UsuarioServiceImpl implements IUsuarioService {
 		Usuario usuarioGuardado = usuarioDao.save(usuario);
 		LOG.error("USUARIO CREADO EN MONGO: "+usuarioGuardado.getId());
 		firebaseService.guardarUsuario(usuarioGuardado);
-		//firebaseService.guardarUsuario(usuarioGuardado);
 		return usuario;
 	}
 	
