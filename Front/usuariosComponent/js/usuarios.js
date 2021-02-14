@@ -56,7 +56,7 @@ function leerUsuarios() {
 }
 
 function borrarUsuario(idUsuario) {
-    let urlCompleta = SERVIDOR + "borrarUsuario/"+idUsuario;
+    let urlCompleta = SERVIDOR + "borrarUsuario/" + idUsuario;
     peticionAjax("POST", urlCompleta, {}, token).then((respuesta) => {
         console.log(respuesta);
         leerUsuarios();
@@ -67,32 +67,33 @@ function borrarUsuario(idUsuario) {
 
 function editarUsuario(usuario, nombre, apellido, fecha) {
     id = usuario;
+
     $("#nombre").val(nombre);
     $("#apellido").val(apellido);
     $("#fechaNac").val(fecha);
 
     $("#guardar").hide();
     $("#editar").show();
+
 }
 
 function editar() {
 
-    var washingtonRef = db.collection("usuarios").doc(id);
-
-    return washingtonRef.update({
+    let obj = {
         nombre: $("#nombre").val(),
         apellido: $("#apellido").val(),
-        fechaNacimiento: $("#fechaNac").val()
+        fechaNacimiento: $("#fechaNac").val(),
+    }
+
+    let urlCompleta = SERVIDOR + "editarUsuario/" + id;
+    peticionAjax("POST", urlCompleta, obj, token).then((respuesta) => {
+        console.log(respuesta);
+        $("#editar").hide();
+        $("#guardar").show();
+        limpiarCampos();
+        leerUsuarios();
     })
-        .then(function () {
-            console.log("Document successfully updated!");
-            $("#editar").hide();
-            $("#guardar").show();
-            limpiarCampos();
-            leerUsuarios();
-        })
         .catch(function (error) {
-            // The document probably doesn't exist.
             console.error("Error updating document: ", error);
         });
 
