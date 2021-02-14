@@ -1,4 +1,4 @@
-console.log("INICIANDO APP FIREBASE");
+/*console.log("INICIANDO APP FIREBASE");
   // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyAkfa-BxfEuUdYN5RPA_IX-Quqx8PWur6E",
@@ -11,4 +11,4 @@ console.log("INICIANDO APP FIREBASE");
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   console.log("INICIANDO FIREBASE STORE");
-  const db = firebase.firestore();
+  const db = firebase.firestore();*/

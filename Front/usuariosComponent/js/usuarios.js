@@ -1,7 +1,10 @@
 let id = "";
+const SERVIDOR = "http://localhost:8080/";
+let tieneToken = false;
 $("#editar").hide();
 
 function guardar() {
+    if(tieneToken){
     console.log("GUARDANDO USUARIO...");
     db.collection("usuarios").add({
         nombre: $("#nombre").val(),
@@ -16,6 +19,9 @@ function guardar() {
         .catch(function (error) {
             console.error("Error adding document: ", error);
         });
+    }else{
+        mostrarModal();
+    }
 }
 
 leerUsuarios();
@@ -23,7 +29,8 @@ leerUsuarios();
 function leerUsuarios() {
     let tabla = $("#tabla");
     tabla.html("");
-    db.collection("usuarios").get().then((querySnapshot) => {
+    
+    /*db.collection("usuarios").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             console.log(`${doc.id} => ${doc.data().nombre}`);
             tabla.append(`<tr><th scope="row">${doc.id}</th>
@@ -35,7 +42,7 @@ function leerUsuarios() {
                 '${doc.id}', '${doc.data().nombre}', '${doc.data().apellido}', '${doc.data().fechaNacimiento}'
                 )">Editar</button></td></tr>`);
         });
-    });
+    });*/
 }
 
 function borrarUsuario(idUsuario) {
@@ -85,5 +92,19 @@ function limpiarCampos() {
     $("#nombre").val("");
     $("#apellido").val("");
     $("#fechaNac").val("");
+}
+
+function crearBodyModal(){
+    let usuarioInput = `<input type="text" id="usuario" placeholder="Ingresa Usuario" class="form-control"  my-3/>`;
+    let claveInput = `<input type="text" id="clave" placeholder="Ingresa Clave" class="form-control"  />`;
+    $("#bodyModal").append(usuarioInput);
+    $("#bodyModal").append(claveInput);
+}
+
+function mostrarModal(){
+    crearBodyModal();
+    $('#myModal').modal({
+        show: 'true'
+    });
 }
 
