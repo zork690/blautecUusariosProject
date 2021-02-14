@@ -43,12 +43,16 @@ public class UsuarioServiceImpl implements IUsuarioService {
 		usuarioActual.setApellido(usuario.getApellido());
 		usuarioActual.setFechaNacimiento(usuario.getFechaNacimiento());
 		usuarioDao.save(usuarioActual);
+		LOG.error("USUARIO ACTUALIZADO EN MONGO DB "+usuarioActual.getId());
+		firebaseService.actualizarUsuario(usuarioActual);
 		return usuarioActual;
 	}
 	
 	@Override
 	public void borrarUsuario(String id) {
 		usuarioDao.deleteById(id);
+		LOG.error("USUARIO BORRADO DE MONGO DB "+id);
+		firebaseService.borrarUsuario(id);
 	}
 
 }

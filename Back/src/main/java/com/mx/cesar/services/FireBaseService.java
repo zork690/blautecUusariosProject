@@ -17,14 +17,6 @@ public class FireBaseService {
 
 	private static final Logger LOG = LoggerFactory.getLogger(FireBaseService.class);
 
-	/*
-	 * public Usuario listarUsuarios(String name) throws InterruptedException,
-	 * ExecutionException { ApiFuture<DocumentSnapshot> future = docRef.get();
-	 * DocumentSnapshot document = future.get(); Usuario usuario = null; if
-	 * (document.exists()) { usuario = document.toObject(Usuario.class); return
-	 * usuario; } return null; }
-	 */
-
 	public void guardarUsuario(Usuario usuario) {
 		try {
 			LOG.error("GUARDANDO EN FIREBASE " + usuario.getId());
@@ -40,16 +32,23 @@ public class FireBaseService {
 		}
 	}
 
-	public String actualizarUsuario(Usuario usuario) throws InterruptedException, ExecutionException {
+	public void actualizarUsuario(Usuario usuario){
+		try {
+		LOG.error("ACTUALIZANDO EN FIREBASE "+usuario.getId());
 		Firestore dbFirestore = FirestoreClient.getFirestore();
 		ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("usuarios").document(usuario.getId())
 				.set(usuario);
-		return collectionsApiFuture.get().getUpdateTime().toString();
+		LOG.error(collectionsApiFuture.get().getUpdateTime().toString());
+		} catch (InterruptedException e) {
+			LOG.error("ERROR ACTUALIZANDO2 "+e.toString());
+		} catch (ExecutionException e) {
+			LOG.error("ERROR ACTUALIZANDO2 "+e.toString());
+		}
 	}
 
-	public String borrarUsuario(String id) {
+	public void borrarUsuario(String id) {
 		Firestore dbFirestore = FirestoreClient.getFirestore();
 		dbFirestore.collection("usuarios").document(id).delete();
-		return "Document with Usuario ID " + id + " ha sido borrado";
+		LOG.error("BORRADO DE FIREBASE USUARIO "+id);
 	}
 }
